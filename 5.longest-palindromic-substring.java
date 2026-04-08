@@ -17,10 +17,13 @@ class Solution {
         if(s.equals(result))
             return s;
 
-        for (int i=1;i<s.length();i++)
+        result = "";
+        for (int i=0;i<s.length();i++)
         {
-            String temp = result.substring(0, result.length()-i );
-
+            if (s.length()%2==0)
+            {
+                
+            }
         }
 
     }
