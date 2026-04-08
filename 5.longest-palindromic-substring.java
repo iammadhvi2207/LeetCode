@@ -18,14 +18,34 @@ class Solution {
             return s;
 
         result = "";
+        int first=0, last =0 ;
         for (int i=0;i<s.length();i++)
         {
-            if (s.length()%2==0)
+            int l1=expand(s,i,i);
+            int l2=expand(s,i,i+1);
+
+            int max= Math.max(l1,l2);
+
+            if(max> last-first)
             {
-                
+                first = i- (max-1)/2;
+                last = i + max/2;
             }
+
         }
 
+        return s.substring(first, last + 1);
+    }
+
+    public int expand(String s, int left, int right)
+    {
+        while (left >= 0 && right <s.length() && s.charAt(left)==s.charAt(right))
+        {
+            left--;
+            right++;
+        }
+
+        return right - left - 1;
     }
 }
 // @lc code=end
