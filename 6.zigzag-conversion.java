@@ -8,21 +8,29 @@
 class Solution {
     public String convert(String s, int numRows) {
         
-        int c=0;
-        String result="";
-        for (int i=1;i<=numRows;i++)
-        {
-            while(c>s.length())
-            {
+        if (numRows == 1 || s.length() <= numRows)
+            return s;
 
-                result=result+s.charAt(c);
-                c+=numRows;
-            }
-            c=i;
+        StringBuilder[] rows = new StringBuilder[numRows];
 
+        for (int i = 0; i < numRows; i++)
+            rows[i] = new StringBuilder();
+        int i = 0;
+        boolean down = false;
+
+        for (char ch : s.toCharArray()) {
+            rows[i].append(ch);
+
+            if (i == 0 || i == numRows - 1)
+                down = !down;
+
+            i += down ? 1 : -1;
         }
-        return result;
+        StringBuilder result = new StringBuilder();
+        for (StringBuilder row : rows)
+            result.append(row);
 
+        return result.toString();
     }
 }
 // @lc code=end
