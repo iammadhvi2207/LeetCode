@@ -9,19 +9,37 @@ class Solution {
     public int myAtoi(String s) {
         String str = s.trim();
         int result = 0;
-        for (int i=0; i<str.length();i++)
+
+        if (str.length() == 0) 
+            return 0;
+        
+        int i = 0;
+        int sign = 1;
+
+        if (str.charAt(0) == '+') 
         {
-            char ch= str.charAt(i);
-            if(!Character.isDigit(ch) || ch!='+' || ch!='-')
+            i++;
+        } 
+        else if (str.charAt(0) == '-') 
+        {
+            sign = -1;
+            i++;
+        }
+        if(!Character.isDigit(str.charAt(0)) && str.charAt(0)!='+' && str.charAt(0)!='-')
+            return 0;
+
+        while (i < str.length()) 
+        {
+            if(!Character.isDigit(str.charAt(i)))
                 break;
-
-            if(i==0 && (ch=='+' || ch=='-'))
-                result = (ch)result;
-
-            
+            int ch= Character.getNumericValue(str.charAt(i));
+            if (result > (Integer.MAX_VALUE - ch) / 10) 
+                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            result= result * 10 + ch;
+            i++;
 
         }
-        return result;
+        return sign * result;
     }
 }
 // @lc code=end
