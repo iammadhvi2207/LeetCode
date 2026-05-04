@@ -21,6 +21,7 @@ class Solution {
                 {
                     char ch = s.charAt(i-1);
                     ch_p = ch;
+                    continue;
                 }
                 
             }
