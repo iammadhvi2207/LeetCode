@@ -14,8 +14,8 @@ class Solution {
             count [n] = count[n] + 1;
         }
 
-        int i=0, j =s1.length()-1;
-        while (j<s2.length())
+        int j =s1.length()-1;
+        for (int i=0; j<s2.length();)
         {
             int c=1;
             for (int x = i+1;x<=j;x++)
@@ -30,8 +30,9 @@ class Solution {
                 i++;
             else{
                 j++;
-                i= j-s1.length();
+                i= j-s1.length()+1;
             }
+            
         }
         return false;
     }
