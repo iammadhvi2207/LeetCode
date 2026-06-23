@@ -8,6 +8,7 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
         int [] count = new int [26];
+        int [] count1 = new int [26];
         for (int i=0;i<s1.length();i++)
         {
             int n = s1.charAt(i)-'a';
@@ -17,20 +18,17 @@ class Solution {
         int j =s1.length()-1;
         for (int i=0; j<s2.length();)
         {
-            int c=1;
-            for (int x = i+1;x<=j;x++)
-            {
-                if(s2.charAt(i) == s2.charAt(x))
-                    c++;
-            }
             int n= s2.charAt(i) - 'a';
-            if(count[n]==c && i==j)
+            count1[n]=count1[n] + 1;
+            
+            if(count[n]==count1[n] && i==j)
                 return true;
-            else if (count[n]==c)
+            else if (count[n]==count1[n])
                 i++;
             else{
                 j++;
                 i= j-s1.length()+1;
+                Arrays.fill(count1, 0); // reset the count1 array
             }
             
         }
