@@ -7,20 +7,31 @@
 // @lc code=start
 class Solution {
     public int maxArea(int[] height) {
-        int[] idx= new int[height.length] 
-        int max_h=0 ;
-        int idx =-1;
+        int[] idx= new int[height.length];
         for (int i=0;i< height.length;i++)
             idx[i] = i;
 
-        sort(height, idx, 0, idx.length)
+        sort(height, idx, 0, idx.length-1);
 
         int area = 0;
-        for (int i = adx.lenght-1; i>=1;i--)
+        for (int i = 0;i<idx.length;i++)
         {
-            
+            if(height[i] * (idx.length - 1) <= area)
+                break;
+            for (int j=i+1;j<idx.length;j++)
+            {
+                if(height[j] * (idx.length - 1) <= area)
+                    break;
+                int len = height[j];
+                int bre = Math.abs(idx[i]-idx[j]);
+                int a = len * bre;
+
+                if(a>area)
+                    area =a;
+            }
         }
 
+        return area;
 
     }
 
@@ -37,18 +48,18 @@ class Solution {
                 a[i]=a[j];
                 a[j]=temp;
 
-                temp = = b[i];
+                temp = b[i];
                 b[i]=b[j];
                 b[j]=temp;
             }
         }
 
-        int temp = a[i+1]
-        a[i+1]=a[h]
+        int temp = a[i+1];
+        a[i+1]=a[h];
         a[h]= temp;
 
-        int temp = b[i+1]
-        b[i+1]=b[h]
+        temp = b[i+1];
+        b[i+1]=b[h];
         b[h]= temp;
 
         return i+1;
@@ -61,7 +72,7 @@ class Solution {
             int pi = partition(a,b,l,h);
 
             sort(a,b,l,pi-1);
-            sort(a,b,l,pi-1);
+            sort(a,b,pi+1,h);
         }
     }
 }
