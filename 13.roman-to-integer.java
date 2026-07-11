@@ -11,7 +11,7 @@ import java.util.Map;
 
 class Solution {
     public int romanToInt(String s) {
-        int sum=0;
+        
         HashMap<Character, Integer> map = new HashMap<>(Map.of(
             'I', 1,
             'V', 5,
@@ -21,8 +21,22 @@ class Solution {
             'D', 500,
             'M', 1000
         ));
-
+        char c= s.charAt(0);
+        int sum=map.get(c);
         
+        for(int i=1; i<s.length(); i++)
+        {
+            char ch= s.charAt(i);
+            if(map.get(c)< map.get(ch))
+                sum-= 2*map.get(c);
+
+            sum+=map.get(ch);
+            c=ch;
+            
+        }
+
+        return sum;
+
     }
 }
 // @lc code=end
