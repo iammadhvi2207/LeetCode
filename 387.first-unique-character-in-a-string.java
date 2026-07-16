@@ -38,6 +38,8 @@ class Solution {
                         freq++;
                 }
                 map.put(ch,freq);
+                if (freq ==1)
+                    break;
             }
         }
         return map;
