@@ -18,12 +18,13 @@ class Solution {
         int j =s1.length()-1;
         for (int i=0; j<s2.length();)
         {
+
             int n= s2.charAt(i) - 'a';
             count1[n]=count1[n] + 1;
             
             if(count[n]==count1[n] && i==j)
                 return true;
-            else if (count[n]==count1[n])
+            else if (count[n]==count1[n] && s1.length()==s2.length())
                 i++;
             else{
                 j++;
