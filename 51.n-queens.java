@@ -14,7 +14,7 @@ class Solution {
     {
         if(row == n)
         {
-            List<String> board = new List<>();
+            List<String> board = new ArrayList<>();
 
             for(char[] r: game)
                 board.add(new String(r));
@@ -35,7 +35,7 @@ class Solution {
 
             int antiDiag = col + row;
 
-            if(antiDiags.contains(antidiag))
+            if(antiDiags.contains(antiDiag))
                 continue;
 
             game[row][col] = 'Q';
@@ -43,7 +43,7 @@ class Solution {
             diags.add(diag);
             antiDiags.add(antiDiag);
 
-            backtrack(row+1, cols, diags, antiiags, n, game, boards);
+            backtrack(row+1, cols, diags, antiDiags, n, game, boards);
 
             game[row][col] = '.';
             cols.remove(col);
@@ -54,7 +54,7 @@ class Solution {
     }
 
     public List<List<String>> solveNQueens(int n) {
-        List<List<String>> boards = new ArrayList<ArrayList<String>>();
+        List<List<String>> boards = new ArrayList<>();
 
         Set<Integer> col = new HashSet<>();
         Set<Integer> diag = new HashSet<>();
