@@ -35,6 +35,8 @@ class Solution {
         // New Concept 
 
         Comparator<String> comparator = new Comparator<>() {
+            @Override           //The program worls without this it is there to prevents mistakes from happening.
+
             public int compare(String a, String b)  // compare() : this is a mandate function 
             {
                 if(map.get(a).equals(map.get(b)))
@@ -44,6 +46,13 @@ class Solution {
         };
 
         result.sort(comparator);
+
+        // result.sort((a,b) -> {
+        // (map.get(a).equals(map.get(b)))
+        //             return a.compareTo(b);
+        //         return map.get(b) - map.get(a);
+        //     });
+        // this is the same thing
 
 
 
